@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Report</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: 300px;
+            margin-bottom: 300px;
+            background-color: #f0f0f0;
+        }
+        .expense-item {
+            width: auto;
+            padding: 20px;
+            margin: 300px 10px 10px; 
+            border: 2px solid black;
+            border-radius: 8px;
+            text-align: center;
+            background-color: white;
+            animation: slide-in 2.5s forwards;
+            opacity: 0; 
+            color: white;
+            background-color: black;
+        }
+        @keyframes slide-in {
+            0% {
+                margin-top: 600px; 
+                opacity: 0;
+            }
+            100% {
+                margin-top: 0; 
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="expenses">
+        <% Expense.map(el => { %>
+        <div class="expense-item">
+            <h1>Cost: <%= el.cost %> $</h1>
+            <h2>Description: <%= el.description %></h2>
+            <h3>Category: <%= el.category %></h3>
+            <h4><%= el.createdAt %></h4>
+        </div>
+        <% }); %>
+    </div>
+</body>
+</html>
